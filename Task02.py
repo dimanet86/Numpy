@@ -23,6 +23,7 @@ def print_array(a: np.ndarray, function, msg: str, pbm: bool, *args):
         print(function(a, *args))
     else:
         print(a)
+    print()
 
 """
 Array creation
@@ -111,7 +112,9 @@ Arithmetic and Comparison Functions
 # Price Increase Function
 # Value represents increase percentage 
 def price_increase(transactions: np.ndarray, value: np.int32) -> np.ndarray:
-    return transactions[4].copy() * (1 + value / 100)
+    transactions[4] *= (1 + value / 100)
+    print_array(transactions, None, "Price increase function", 1)
+    assert transactions.shape == (6, 100)
 
 # Filter Transactions Function: Implement a function to filter transactions to only include those with a quantity greater than 1.
 def filter_trans(transactions: np.ndarray) -> np.ndarray:
@@ -157,8 +160,6 @@ Indexing and Slicing Functions
 def extract_user(transactions: np.ndarray, user_id: int) -> np.ndarray:
     return transactions[:, transactions[1] == user_id]
 
-extract_user(transactions, 949)
-
 # Date Range Slicing Function: Develop a function to slice the dataset 
 # to include only transactions within a specific date range.
 def slice_time(transactions: np.ndarray, 
@@ -189,7 +190,7 @@ def top_five_prods(transactions: np.ndarray) -> np.ndarray:
                         list(revenues.values())
                         ])
     rating = np.argsort(temp_array[1])
-    return temp_array[0, rating[-5:]].copy() # product ids of top five product by revenue in asc order 
+    return temp_array[0, rating[-5:]].astype(np.int32) # product ids of top five product by revenue in asc order 
 
 """
 Manipulation workflow
@@ -220,9 +221,7 @@ result = masked(transactions=transactions)
 assert len(result.shape) == 2
 print_array(result, function=None, msg="Masked array function", pbm=1)
 
-result = price_increase(transactions, 10)
-assert result.shape == (2, 100)
-print_array(result, function=None, msg="Price increase function", pbm=1)
+price_increase(transactions, 10)
 
 result = filter_trans(transactions)
 print(result.shape)
@@ -238,27 +237,5 @@ result = slice_time(transactions, '2023-01-01T00:00', '2024-01-01T00:00')
 print_array(result.T, function=None, msg="Date Range Slicing function", pbm=0)
 
 result = top_five_prods(transactions)
-print_array(result.T, function=None, msg="Top Five Products function", pbm=0)
-
-x = np.unique(transactions[2])
-revenues = {}
-for prod in x:
-    indices = transactions[2] == prod
-    revenues[prod] = np.sum(transactions[3, indices] * transactions[4, indices])
-x = np.array([list(revenues.keys()), list(revenues.values())], dtype=(np.int8, np.float32))
-
-x.shape
-
-transactions[1:3, transactions[2] == x[0]]
-
-transactions[2]
-
-x
-
-A = np.array([[1,2,3,1,2,4,5,5,10], np.arange(A[0].size)])
-
-A[:, A[0] == 1][0] * A[:, A[0] == 1][1]
-
-A[1][[0,1,2,8]]
-
-A
+assert result.shape == (5, )
+print_array(result, function=None, msg="Top Five Products function", pbm=0)
