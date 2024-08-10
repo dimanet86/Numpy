@@ -230,7 +230,7 @@ print_array(result, function=None, msg="Filter transactions function", pbm=1)
 result = comparison_tp(transactions, '2023-01-01T00:00', '2024-01-01T00:00', '2023-01-01T00:00', '2025-11-01T00:00')
 print(f'Revenue comparison function result {result}')
 
-result = extract_user(transactions, 205)
+result = extract_user(transactions, transactions[1, 2])
 print_array(result.T, function=None, msg="User Transaction function", pbm=0)
 
 result = slice_time(transactions, '2023-01-01T00:00', '2024-01-01T00:00')
