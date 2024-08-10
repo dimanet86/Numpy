@@ -1,3 +1,5 @@
+#Dmytro Reshetnikov
+
 import numpy as np
 
 def print_array(a: np.ndarray, function, msg: str, pbm, *args):

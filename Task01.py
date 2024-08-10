@@ -1,3 +1,5 @@
+# Dmytro Reshetnikov
+
 import numpy as np
 
 def print_array(a: np.ndarray, msg: str = ""):
@@ -29,3 +31,5 @@ Basic arithmetic
 print_array(one_dim + 5, 'Add 5 to each element of the one-dimensional array and print the result.') 
 # Multiply each element of the two-dimensional array by 2 and print the result.
 print_array(two_dim * 2, 'Multiply each element of the two-dimensional array by 2 and print the result.')
+
+# this is for commit message

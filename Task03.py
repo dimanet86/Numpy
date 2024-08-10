@@ -1,3 +1,5 @@
+# Dmytro Reshetnikov
+
 import numpy as np
 
 def print_array(a: np.ndarray, function, msg: str, pbm: bool, *args):
@@ -55,3 +57,5 @@ print_array(np_array, reshape, "Reshape function", 1, 3, 12)
 print_array(np_array, split, "Split function", 1, 3)
 
 print_array(combine(split(np_array, 2)), None, "Combine function", 0)
+
+# this is for commit message

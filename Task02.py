@@ -1,3 +1,5 @@
+# Dmytro Reshetnikov
+
 import numpy as np
 import random as rd
 import math
@@ -239,3 +241,5 @@ print_array(result.T, function=None, msg="Date Range Slicing function", pbm=0)
 result = top_five_prods(transactions)
 assert result.shape == (5, )
 print_array(result, function=None, msg="Top Five Products function", pbm=0)
+
+# this is for commit message
