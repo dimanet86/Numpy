@@ -26,7 +26,9 @@ def print_array(a: np.ndarray, function, msg: str, pbm: bool, *args):
 # Array creation
 np_array = np.random.randint(10, 100, 36).reshape(6, 6)
 
-# Array Manipulation Functions
+"""
+Array Manipulation Functions
+"""
 # Transpose Function: Create a function to transpose the array and return the result.
 def transpose(array: np.ndarray) -> np.ndarray:
     return np.transpose(array).copy() # so initial array left unchanged
